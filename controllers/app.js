@@ -51,9 +51,9 @@ const fileUpload = (req, res) => {
       }))
       return log.error(err)
     }
-    // console.log(req.file);
     if (req.file) {
-      res.json(format({}))
+      let path = req.file.path.split('public/')[1];
+      res.json(format({data:{path}}))
     }
   })
 }
