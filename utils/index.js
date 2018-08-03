@@ -1,8 +1,9 @@
-const format = ({resCode = 2000, msg = 'success', data = {}}) => {
+const format = ({resCode = 2000, msg = 'success', data = {},resultStatus = true}) => {
   return {
       resCode,
       msg,
-      data
+      data,
+      resultStatus
   }
 }
 
