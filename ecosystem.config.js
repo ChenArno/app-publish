@@ -25,7 +25,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'root',
-      host: ['47.97.73.17'],
+      host: ['47.97.96.186'],
       ref: 'origin/master',
       repo: 'https://github.com/ChenArno/apk-node.git',
       path: '/var/node',
