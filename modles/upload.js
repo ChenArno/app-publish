@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
   //获取文件MD5，重命名，添加后缀,文件重复会直接覆盖
   filename(req, file, cb) {
     const fileFormat = file.originalname.split(".");
-    cb(null, file.originalname.split('.apk')[0] + '-' + md5(file) + '.' + fileFormat[fileFormat.length - 1])
+    cb(null, file.originalname.split('.apk')[0] + '.' + fileFormat[fileFormat.length - 1])
   }
 })
 

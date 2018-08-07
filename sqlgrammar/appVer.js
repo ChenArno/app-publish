@@ -1,6 +1,8 @@
 const grammar = {
-  insert: 'INSERT INTO app_version(appName,ios,android,version,timestamp,createTime,path,desc,updateDesc,versionCode) VALUES(?,?,?,?,?,?,?,?,?,?)',
-  queryAll: "select * from cgoods_msg ORDER BY id LIMIT ?,?"
+  insert: 'INSERT INTO app_version(appName,packageName,ios,android,version,updateTime,createTime,path,introduce,updateDesc,versionCode) VALUES(?,?,?,?,?,?,?,?,?,?,?)',
+  queryNum: "select * from app_version ORDER BY id LIMIT ?,?",
+  queryAll:"select * from app_version ORDER BY versionCode,createTime desc",
+  deleteById:"DELETE from app_version WHERE id = ?"
 }
 
 module.exports = grammar

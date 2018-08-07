@@ -12,5 +12,6 @@ router.get('/', function(req, res, next) {
 router.get('/app/getVersion',controllers.app.getVersion);
 router.post('/app/addVersion',controllers.app.addVersion);
 router.post('/app/uploadApp',controllers.app.fileUpload)
+router.post('/app/deleteItem',controllers.app.deleteItem)
 
 module.exports = router;

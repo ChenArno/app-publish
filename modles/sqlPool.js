@@ -40,24 +40,39 @@ const execute = (sql, params) => {
   return new Promise((resolve, reject) => {
     pool.getConnection((err, connection) => {
       if (err) {
-        return log.error(err) && reject(err);
+        log.error(err)
+        reject(err);
+        return
       }
       connection.query(sql, params, (error, res) => {
         connection.release();
-        if (error) return log.error(error) && reject(error)
-        log.info("插入数据成功:"+sql+"/"+params) && resolve(res);
+        if (error) {
+          log.error(error)
+          reject(error)
+          return
+        }
+        log.info("执行事务成功:" + sql + "/" + params)
+        resolve(res);
       })
     })
   })
 }
 
 //多条事务查询
-const execTrans = (sqlLists, params) => {
+const execTrans = (sqlLists) => {
   return new Promise((resolve, reject) => {
     pool.getConnection((error, connection) => {
-      if (error) return log.error(error) && reject(error);
+      if (error) {
+        log.error(error)
+        reject(error);
+        return
+      }
       connection.beginTransaction(err => {
-        if (err) return log.error(err) && reject(err);
+        if (err) {
+          log.error(err)
+          reject(err);
+          return
+        }
         log.info("开始执行transaction，共执行" + sqlLists.length + "条数据")
         const funcAry = sqlLists.map(sql_param => {
           return cb => {
@@ -89,7 +104,7 @@ const execTrans = (sqlLists, params) => {
                   connection.release();
                   return reject(err);
                 });
-              }else{
+              } else {
                 connection.release();
                 return resolve(info)
               }

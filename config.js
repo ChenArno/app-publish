@@ -11,5 +11,6 @@ module.exports = {
   },
   upload: {
     path: process.cwd() + '/public/dowload'
-  }
+  },
+  appName:"金蒜"
 }
