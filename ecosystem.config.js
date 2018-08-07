@@ -27,7 +27,7 @@ module.exports = {
       user: 'root',
       host: ['47.97.96.186'],
       ref: 'origin/master',
-      repo: 'https://github.com/ChenArno/apk-node.git',
+      repo: 'https://github.com/ChenArno/app-publish.git',
       path: '/var/node',
       "ssh_options": "StrictHostKeyChecking=no",
       'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
