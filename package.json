@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "serve": "nodemon ./bin/www"
+    "serve": "nodemon ./bin/www",
+    "pm2": "pm2 deploy production setup",
+    "update": "pm2 deploy production update"
   },
   "dependencies": {
     "apk-node": "^1.0.0",

@@ -3,7 +3,9 @@ const db = require('../config')
 const async = require("async");
 const log = require('../utils/logger');
 
-const pool = mysql.createPool(db.mysql);
+log.info(process.env.NODE_ENV);
+const config = (process.env.NODE_ENV == 'production') ? db.mysql.production : db.mysql.development
+const pool = mysql.createPool(config);
 //第一条查询
 const firstQuery = (sql, params) => {
   return new Promise((resolve, reject) => {
